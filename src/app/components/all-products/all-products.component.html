@@ -1,0 +1,28 @@
+
+
+    <!-- SEARCH AREA -->
+   <div class="container">
+       <div class="jumbotron"> <h1>Offshore Guitar Store</h1> </div>
+       
+       <label>Search Guitar</label>
+       <input [(ngModel)] = "searchTerm" (ngModelChange) = "search()"/>
+           <label>Sort by:
+               <select [(ngModel)]="prop" (ngModelChange)="sortOrder()">
+                   <option value="name" selected>Name</option>
+                   <option value="price">Price</option>
+               </select>
+           </label>
+           <br>
+           <label>
+               <input type="radio" [(ngModel)]="direction" (ngModelChange)="sortOrder()" name="direction" value="forward" checked>
+               Ascending
+           </label>
+           <label>	
+               <input type="radio" [(ngModel)]="direction" (ngModelChange)="sortOrder()" name="direction" value="reverse" >
+               Descending
+           </label>
+           <p>&nbsp;	There are currently {{products.length}} guitars in store.</p>
+   </div>
+
+
+<app-product-item class="itemHolder" *ngFor="let product of products" [product]="product" ></app-product-item>

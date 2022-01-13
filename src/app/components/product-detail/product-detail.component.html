@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{product.name}}</div>
+        <div class="panel-body">
+            <p >Price Revised on: {{product.dateAdded | date:'M/d/yy'}}</p><p class="rightPrice magnifyPrice">${{product.price}}</p>
+            <p> {{product.description}}</p>
+            <p> {{product.longDescription}}</p>
+    
+            <!-- added this navigation for switching between different guitars -->
+            <div class="navigation">
+                
+                <a href="/product-detail/{{previous}}" *ngIf="product.id>1"> &laquo; previous </a>
+                <a href="/product-detail/{{next}}" *ngIf="product.id<products.length"class="checkout"> next &raquo;</a>
+            </div>
+    
+            <hr><br />
+            <a routerLink="/" class="link">&laquo; Go back to Search  </a>
+            <a routerLink="/checkout/{{product.id}}">  Checkout &raquo;</a>
+        </div>
+    </div>
+</div>
+
+
+
+
