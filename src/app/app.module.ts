@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { GuitarFormComponent } from './components/guitar-form/guitar-form.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     ProductItemComponent,
     
     ProductDetailComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    GuitarFormComponent
   ],
   imports: [
     BrowserModule,

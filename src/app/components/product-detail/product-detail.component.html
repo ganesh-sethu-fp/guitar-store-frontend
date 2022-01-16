@@ -1,25 +1,52 @@
 <div class="container">
     <div class="panel panel-primary">
-        <div class="panel-heading">{{product.name}}</div>
+        <div class="panel-heading"> {{product.name}} </div>
         <div class="panel-body">
-            <p >Price Revised on: {{product.dateAdded | date:'M/d/yy'}}</p><p class="rightPrice magnifyPrice">${{product.price}}</p>
+            <img sytle="float:left;" [src]="imgPath" />
+            <p>Price Revised on: {{ product.dateAdded | date:'MM/yy' }} </p>
+            <p class="rightPrice magnifyPrice">${{product.price}}</p>
             <p> {{product.description}}</p>
-            <p> {{product.longDescription}}</p>
-    
-            <!-- added this navigation for switching between different guitars -->
-            <div class="navigation">
-                
-                <a href="/product-detail/{{previous}}" *ngIf="product.id>1"> &laquo; previous </a>
-                <a href="/product-detail/{{next}}" *ngIf="product.id<products.length"class="checkout"> next &raquo;</a>
+            <!-- <p> {{product.longDescription}}</p> -->
+
+            <!-- tab switching using bootstrap template  -->
+            <!-- Tab links -->
+            <div class="tab">
+                <button class="tablinks" (click)="tabChange($event, 'description')">description</button>
+                <button class="tablinks" (click)="tabChange($event, 'specification')">specification</button>
+                <button class="tablinks" (click)="tabChange($event, 'reviews')">reviews</button>
             </div>
-    
+
+            <!-- Tab content -->
+            <div id="description" class="tabcontent">
+                <p> {{product.longDescription}}</p>
+            </div>
+
+            <div id="specification" [style.display]="specsTab" class="tabcontent">                
+                <p>{{product.specifications}}</p>
+            </div>
+
+            <div id="reviews" [style.display]="reviewsTab" class="tabcontent">
+                <div *ngFor="let review of product.reviews">
+                    <h3>review points: {{review.star}}</h3>
+                    <p>{{review.body}}~{{review.name}} on</p>
+                    <hr/>
+                </div>
+                <button>
+                    Add review
+                </button>
+            </div>
+
+            <!-- navigation switching between different products -->
+            <div class="navigation">
+
+                <a href="/product-detail/{{previous}}" style="margin-right: 90%;" *ngIf="product.id>1"> &laquo; previous
+                </a>
+                <a href="/product-detail/{{next}}" *ngIf="product.id<products.length" class="checkout"> next &raquo;</a>
+            </div>
+
             <hr><br />
-            <a routerLink="/" class="link">&laquo; Go back to Search  </a>
-            <a routerLink="/checkout/{{product.id}}">  Checkout &raquo;</a>
+            <a routerLink="/" class="link" style="margin-right: 80%;">&laquo; Go back to Search </a>
+            <a href="/checkout/{{product.id}}" class="link"> Checkout &raquo;</a> 
         </div>
     </div>
 </div>
-
-
-
-

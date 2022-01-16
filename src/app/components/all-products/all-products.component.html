@@ -5,7 +5,7 @@
        <div class="jumbotron"> <h1>Offshore Guitar Store</h1> </div>
        
        <label>Search Guitar</label>
-       <input [(ngModel)] = "searchTerm" (ngModelChange) = "search()"/>
+       <input (keyup) = "search($event)"/>
            <label>Sort by:
                <select [(ngModel)]="prop" (ngModelChange)="sortOrder()">
                    <option value="name" selected>Name</option>
@@ -21,7 +21,7 @@
                <input type="radio" [(ngModel)]="direction" (ngModelChange)="sortOrder()" name="direction" value="reverse" >
                Descending
            </label>
-           <p>&nbsp;	There are currently {{products.length}} guitars in store.</p>
+           <p> There are currently {{productsLength}} product(s) of in store.</p>
    </div>
 
 

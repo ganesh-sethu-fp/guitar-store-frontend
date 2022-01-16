@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http"; 
 
 @Component({
   selector: 'app-checkout',
@@ -11,6 +11,8 @@ export class CheckoutComponent implements OnInit {
   products:any;
   product:any;
   id:any
+  imgPath:String;
+
 
   constructor(private route: ActivatedRoute,private httpClient: HttpClient) { }
 
@@ -21,6 +23,7 @@ export class CheckoutComponent implements OnInit {
       this.id =Number(this.route.snapshot.paramMap.get('id'));
       console.log(this.products,this.id);
       this.product = this.products.find((i) => i.id == this.id);
+      this.imgPath="../../../assets/img/"+this.product.image+".jpg";
     })
   }
 

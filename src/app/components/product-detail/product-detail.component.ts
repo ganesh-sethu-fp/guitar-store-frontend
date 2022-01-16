@@ -16,6 +16,9 @@ export class ProductDetailComponent implements OnInit {
   id: any;
   next:any;
   previous:any;
+  imgPath:String;
+  specsTab:any="none";
+  reviewsTab:any="none";
   constructor(private dataService:DataService,private route: ActivatedRoute,private httpClient: HttpClient) { }
 
   ngOnInit(): void {
@@ -24,13 +27,26 @@ export class ProductDetailComponent implements OnInit {
       this.products = data;
       this.id =Number(this.route.snapshot.paramMap.get('id'));
       console.log(this.products,this.id);
-      this.product = this.products.find((i) => i.id == this.id);
+      this.product = this.products.find((product) => product.id == this.id);
       
      this.previous=this.id-1;    
      this.next=this.id+1;
+     this.imgPath="../../../assets/img/"+this.product.image+".jpg";
     })    
   }
+  tabChange(event, tab):void{
+       let tabcontent;
+    
+      //get all elements with class="tabcontent" and hide them
+       tabcontent = document.getElementsByClassName("tabcontent");
+      for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+       }
+      //displays the particular tab that is selected
+      document.getElementById(tab).style.display = "block";
+      
 
+  }
   
 
   

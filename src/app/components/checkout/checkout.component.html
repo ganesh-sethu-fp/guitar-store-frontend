@@ -1,13 +1,14 @@
 <div class="container">
     <div class="panel panel-primary">
-        <div class="panel-heading">{{product.name | lowercase }}</div>
+        <div class="panel-heading">{{product.name }}</div>
         <div class="panel-body">
-            <p >Price Revised on: {{product.dateAdded | date:'MM/yy'}}</p><p class="rightPrice magnifyPrice">${{product.price | number:0 }}</p>
+            <p>Price Revised on: {{product.dateAdded | date:"MM/yy"}}</p>
+            <p class="rightPrice magnifyPrice">${{product.price}}</p>
+            <img [src]="imgPath"/>
             <p> {{product.description}}</p>
-            <h3> Thanks for shoping with us. you have just ordered a {{product.name | lowercase }}</h3>
-            <br><hr><br>
-            <a href="/" >&laquo; Go back to Guitars list</a>
+            <h3> Thanks for shoping with us. you have just ordered a {{product.name}}</h3><br>
+            <hr><br>
+            <a href="/">&laquo; Go back to Guitars list</a>
         </div>
-      </div>
+    </div>
 </div>
-
